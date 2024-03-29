@@ -17,7 +17,7 @@ class SelectableViewModel @Inject constructor() : BaseViewModel<SelectableUIStat
     init {
         state.value = SelectableUIState.Simple(
             mutableStateListOf<Selectable>().apply {
-                for (i in 1..10)
+                for (i in 1..100)
                     add(Selectable("test"))
             }, mutableStateMapOf()
         )

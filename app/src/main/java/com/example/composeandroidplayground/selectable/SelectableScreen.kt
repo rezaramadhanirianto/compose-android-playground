@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -18,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateMap
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,7 +34,7 @@ fun SelectableScreenRoute() {
     val viewModel: SelectableViewModel = hiltViewModel()
     val state = viewModel.state.collectAsStateWithLifecycle()
 
-    SelectableScreen(state = state.value) { data ,_ ->
+    SelectableScreen(state = state.value) { data, _ ->
         viewModel.setSelected(data)
     }
 }
@@ -51,9 +51,19 @@ fun SelectableScreen(
             is SelectableUIState.Loading -> {
                 LoadingWidget()
             }
-
+            
             is SelectableUIState.Simple -> {
-                SelectableScreenPopulateSimple(state.selectables, state.selectedSelectables, onSelect)
+                val list = remember {
+                    state.selectables
+                }
+                val selected = remember {
+                    state.selectedSelectables
+                }
+                SelectableScreenPopulateSimple(
+                    list,
+                    selected,
+                    onSelect
+                )
             }
 
             else -> {
@@ -69,8 +79,10 @@ fun SelectableScreenPopulateSimple(
     selectedSelectables: SnapshotStateMap<String, Selectable>,
     onSelect: (Selectable, Boolean) -> Unit
 ) {
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
-        items(selectables.size) { index ->
+    LazyColumn {
+        items(selectables.size, key = {
+            selectables[it].id
+        }) { index ->
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -84,10 +96,12 @@ fun SelectableScreenPopulateSimple(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    val isSelected = selectedSelectables.contains(selectables[index].id)
+                    val isSelected=
+                            selectedSelectables.contains(selectables[index].id)
+
                     Text(text = selectables[index].text)
                     Icon(
-                        imageVector = if(isSelected) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
+                        imageVector = if (isSelected) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
                         modifier = Modifier.clickable {
                             onSelect.invoke(selectables[index], !isSelected)
                         },
