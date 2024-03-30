@@ -25,7 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.composeandroidplayground.common.theme.ComposeAndroidPlaygroundTheme
+import com.example.composeandroidplayground.common.theme.BaseTheme
 import com.example.composeandroidplayground.common.view.LoadingWidget
 import com.example.composeandroidplayground.selectable.model.Selectable
 
@@ -116,7 +116,7 @@ fun SelectableScreenPopulateSimple(
 @Preview
 @Composable
 fun SelectableScreenPreview() {
-    ComposeAndroidPlaygroundTheme(
+    BaseTheme(
         darkTheme = false
     ) {
         Surface {

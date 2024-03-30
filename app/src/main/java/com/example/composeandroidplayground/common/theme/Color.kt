@@ -17,3 +17,12 @@ object CAPColor {
     val InstaGray = Color(0XFF545454)
     val InstaDark = Color(0XFF162326)
 }
+
+object SpotifyColor {
+    val Black = Color(29, 29, 29)
+    val Green = Color(30, 215, 96)
+    val White = Color.White
+    val Gray = Color(133, 133, 133)
+    val LightGray = Color(180, 180, 180)
+    val DarkGray = Color(61, 61, 61)
+}
