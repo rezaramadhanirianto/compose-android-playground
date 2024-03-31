@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,7 +36,7 @@ import kotlin.math.ceil
 fun SpotifyScreen() {
     SpotifyScreenContent(
         categorySection = {
-            SpotifyCategorySection(false)
+            SpotifyCategorySection()
         },
         playlistSection = {
             spotifyPlaylistSection()
@@ -74,24 +75,30 @@ fun SpotifyScreenContent(
 }
 
 @Composable
-private fun SpotifyCategorySection(isSelected: Boolean) {
+private fun SpotifyCategorySection() {
+    val items = listOf("All", "Best 2024", "Podcast")
     LazyRow {
-        items(3) {
-            val backgroundColor = if (isSelected) SpotifyColor.Green else SpotifyColor.DarkGray
-            val textColor = if (isSelected) SpotifyColor.Black else SpotifyColor.White
-
-            Box(
-                modifier = Modifier
-                    .padding(start = Dimens.medium)
-                    .background(
-                        backgroundColor,
-                        shape = RoundedCornerShape(Dimens.Radius.rounded)
-                    )
-                    .padding(horizontal = Dimens.extraLarge, vertical = Dimens.dp6)
-            ) {
-                Text(text = "All", color = textColor, fontSize = Dimens.TextSize.mediumText)
-            }
+        items(items) {
+            SpotifyCategoryItem(it, it == "All")
         }
+    }
+}
+
+@Composable
+private fun SpotifyCategoryItem(item: String, isSelected: Boolean) {
+    val backgroundColor = if (isSelected) SpotifyColor.Green else SpotifyColor.DarkGray
+    val textColor = if (isSelected) SpotifyColor.Black else SpotifyColor.White
+
+    Box(
+        modifier = Modifier
+            .padding(start = Dimens.medium)
+            .background(
+                backgroundColor,
+                shape = RoundedCornerShape(Dimens.Radius.rounded)
+            )
+            .padding(horizontal = Dimens.extraLarge, vertical = Dimens.dp6)
+    ) {
+        Text(text = item, color = textColor, fontSize = Dimens.TextSize.mediumText)
     }
 }
 

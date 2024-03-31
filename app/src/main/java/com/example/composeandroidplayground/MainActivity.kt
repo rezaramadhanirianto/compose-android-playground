@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.composeandroidplayground.common.theme.BaseTheme
 import com.example.composeandroidplayground.selectable.SelectableScreenRoute
+import com.example.composeandroidplayground.state.SavableAndNotSavableScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
             BaseTheme(
                 darkTheme = false
             ) {
-                SelectableScreenRoute()
+                SavableAndNotSavableScreen()
             }
         }
     }

@@ -25,7 +25,7 @@ android {
     buildTypes {
         debug{
             isMinifyEnabled = false
-            isDebuggable = false
+            isDebuggable = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
