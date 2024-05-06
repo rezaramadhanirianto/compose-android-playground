@@ -1,0 +1,25 @@
+package com.example.composeandroidplayground.combineWithXml
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+
+@Composable
+fun RectangleMatchParentWithHeight(booleanState: MutableState<Boolean>) {
+    if (booleanState.value) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
+                .background(Color.Cyan)
+        )
+    } else {
+        Box(modifier = Modifier)
+    }
+}
