@@ -14,23 +14,20 @@
         android:theme="@style/Theme.ComposeAndroidPlayground"
         tools:targetApi="31">
         <activity
-            android:name=".combineWithXml.ComposeInsideRecyclerView"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".combineWithXml.state.ChangeStateOutsideComposeActivity"
+            android:exported="true" />
         <activity
-            android:name=".selectable.SelectableActivity"
-            android:exported="false" />
+            android:name=".combineWithXml.issueJumpingRecyclerView.ComposeInsideRecyclerView"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.ComposeAndroidPlayground"/>
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

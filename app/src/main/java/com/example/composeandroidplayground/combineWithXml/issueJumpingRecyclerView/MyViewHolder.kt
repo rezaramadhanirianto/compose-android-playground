@@ -1,18 +1,11 @@
-package com.example.composeandroidplayground.combineWithXml
+package com.example.composeandroidplayground.combineWithXml.issueJumpingRecyclerView
 
-import android.content.Context
-import android.util.TypedValue
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.view.ViewTreeObserver
 import android.widget.FrameLayout
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.ComposeView
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.composeandroidplayground.databinding.TextRectangleViewLayoutBinding
 import kotlin.random.Random

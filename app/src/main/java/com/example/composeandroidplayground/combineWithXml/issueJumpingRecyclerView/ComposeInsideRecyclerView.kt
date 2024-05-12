@@ -1,11 +1,8 @@
-package com.example.composeandroidplayground.combineWithXml
+package com.example.composeandroidplayground.combineWithXml.issueJumpingRecyclerView
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.composeandroidplayground.R
 import com.example.composeandroidplayground.databinding.ActivityComposeInsideRecyclerViewBinding
 
 class ComposeInsideRecyclerView : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.example.composeandroidplayground.combineWithXml
+package com.example.composeandroidplayground.combineWithXml.issueJumpingRecyclerView
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

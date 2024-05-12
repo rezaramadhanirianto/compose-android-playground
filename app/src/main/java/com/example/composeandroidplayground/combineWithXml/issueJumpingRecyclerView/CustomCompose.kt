@@ -1,4 +1,4 @@
-package com.example.composeandroidplayground.combineWithXml
+package com.example.composeandroidplayground.combineWithXml.issueJumpingRecyclerView
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
